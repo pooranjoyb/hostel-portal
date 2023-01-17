@@ -1,14 +1,15 @@
 <div class="container-sm" id="centered_div"></iframe>
     <div class="row justify-content-center">
-        <form id="centered_div">
+        <form id="centered_div" action="/register" method="POST">
             <div class="mb-3">
                 <label for="exampleInputRegnum" class="form-label"  maxlength="4">Registration No.</label>
-                <input type="text" class="form-control" minlength="5" maxlength="9" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                <input type="text" name="registrationNum" class="form-control" minlength="5" maxlength="9" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                 <div class="form-text">This is your username</div>
             </div>
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
+                <label for="exampleInputPassword1" 
+                class="form-label">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" name="pass" >
             </div>
             <div class="container d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary">Register</button>

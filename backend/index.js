@@ -1,8 +1,12 @@
 import express from 'express'
 import bp from'body-parser'
+import Connection from './Database/db.js';
+import dotenv from 'dotenv'
+import registerRouter from './Routes/register.js';
 
+dotenv.config();
 const app = express();
-
+const PORT = process.env.PORT || 8080
 //setting up viewport for ejs
 app.set('view engine', 'ejs');
 
@@ -17,6 +21,10 @@ app.get('/', (req, res) => {
     res.render('../public/views/base', {title: "Hostel Portal"});
 })
 
-app.listen(3000, () => {
-    console.log("App listening on port 3000")
+//Register Route
+app.use('/', registerRouter)
+
+app.listen(PORT, () => {
+    console.log(`App listening on port ${PORT}`)
+    Connection();
 })
