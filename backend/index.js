@@ -2,7 +2,8 @@ import express from 'express'
 import bp from'body-parser'
 import Connection from './Database/db.js';
 import dotenv from 'dotenv'
-import registerRouter from './Routes/register.js';
+import registerRouter from './Routes/registerRoute.js';
+import loginRouter from './Routes/loginRoute.js';
 
 dotenv.config();
 const app = express();
@@ -23,6 +24,9 @@ app.get('/', (req, res) => {
 
 //Register Route
 app.use('/', registerRouter)
+
+//Login Route
+app.use('/', loginRouter)
 
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`)
