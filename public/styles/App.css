@@ -7,6 +7,11 @@ a{
     color: blue;
 }
 
+#card{
+    text-decoration: none;
+    color: white;
+}
+
 #centered_div {
     width: 70%;
 }
