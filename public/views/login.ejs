@@ -23,16 +23,16 @@
         </div>
         <div class="container-sm" id="centered_div"></iframe>
             <div class="row justify-content-center">
-                <form id="centered_div" action="/userPortal">
+                <form id="centered_div" action="/userPortal" method="POST">
                     <div class="mb-3">
-                        <label for="exampleInputRegnum" class="form-label" maxlength="4">Registration No.</label>
-                        <input type="text" class="form-control" minlength="5" maxlength="9"
+                        <label for="exampleInputRegnum" class="form-label"  maxlength="4">Registration No.</label>
+                        <input type="text" name="usernameLogin" class="form-control" minlength="5" maxlength="9"
                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                         <div class="form-text">This is your username</div>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
+                        <input type="password" class="form-control"  name="passwordLogin" id="exampleInputPassword1">
                     </div>
                     <div class="container d-flex justify-content-center">
                         <button type="submit" class="btn btn-success">Login</button>
