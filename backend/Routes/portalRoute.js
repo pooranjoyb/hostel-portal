@@ -13,7 +13,7 @@ portalRoute.post('/userPortal', async (req, res) => {
             if (isMatchUsn == 0 && isMatchPass == 0) {
                 res.status(201).render('../public/views/userPortal', { title: `User ${user.username}`})
             } else {
-                res.send("Invalid credentials")
+                res.send("Invalid user credentials")
             }
         }).clone().catch((err) => {
             console.log(err)
