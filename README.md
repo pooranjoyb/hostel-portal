@@ -3,7 +3,7 @@ This is a Hostel Portal that allows users to gather info about the students in t
 
 ## Overview
 
-- Hostel Portal is an online portal with which you can check out the room numbers, Hpstel-Timings, Mess-Menu and many more. 
+- Hostel Portal is an online portal with which you can check out the room numbers, Hostel-Timings, Mess-Menu and many more. 
 - MongoDB is used for storing and fetching user data.
 - You can register yourself and access the services offered by the portal.
 
