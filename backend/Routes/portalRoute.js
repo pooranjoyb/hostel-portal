@@ -1,19 +1,31 @@
 import express from 'express'
 import register from '../Database/Model/register.js'
 const portalRoute = express.Router();
+import bcrypt from 'bcryptjs'
 
 //Register Route
 portalRoute.post('/userPortal', async (req, res) => {
+    const usn = req.body.usernameLogin
+    const pass = req.body.passwordLogin
     try {
-        const usn = req.body.usernameLogin
-        const pass = req.body.passwordLogin
         await register.findOne({ username: usn }, async (err, user) => {
-            const isMatchUsn = await usn.localeCompare(user.username)
-            const isMatchPass = await pass.localeCompare(user.password)
-            if (isMatchUsn == 0 && isMatchPass == 0) {
-                res.status(201).render('../public/views/userPortal', { title: `User ${user.username}`})
+            if(err){
+                res.send(err)
+            }
+            if (user) {
+                bcrypt.compare(pass, user.password, (err, isMatch) => {
+                    if (err){
+                        res.send(err)
+                    }
+                    if (isMatch) {
+                        res.status(201).render('../public/views/userPortal', { title: `User ${user.username}`})
+                    }
+                    else{
+                        res.send("Incorrect Password")
+                    }
+                })
             } else {
-                res.send("Invalid user credentials")
+                res.send("Incorrect Password")
             }
         }).clone().catch((err) => {
             console.log(err)
