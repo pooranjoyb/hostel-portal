@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 const { Schema } = mongoose;
 import jwt from 'jsonwebtoken'
+import bcrypt from 'bcryptjs'
 
 const registerSchema = new Schema({
     username: Number,
@@ -24,6 +25,13 @@ registerSchema.methods.generateAuthToken = async function(){
         res.send("Error")
     }
 }
+
+registerSchema.pre("save", function(next){
+    
+    const salt = bcrypt.genSaltSync(12);
+    this.password = bcrypt.hashSync(this.password, salt);
+    next();
+})
 
 const register = mongoose.model('register', registerSchema)
 
