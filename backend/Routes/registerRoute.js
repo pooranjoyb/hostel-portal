@@ -13,10 +13,11 @@ registerRouter.post('/register', (req, res) => {
     })
 
     register.findOne({ username: usn }, async (err, user) => {
-        const isMatchUsn = await usn.localeCompare(user.username)
-        const isMatchPass = await pass.localeCompare(user.password)
-        if (isMatchUsn == 0 || isMatchPass == 0) {
-            res.send('User already exists!!! Please Login using your Registration No. and Password')
+        if (err) {
+            res.send(err)
+        }
+        else if (user) {
+            res.send('User already exists!!! Please Login')
         } else {
             const token = newUser.generateAuthToken();
             try {
@@ -27,8 +28,8 @@ registerRouter.post('/register', (req, res) => {
                 res.send("Couldnot register. Contact the developer")
             }
         }
-    }).clone().catch((err) => {
-        console.log(err)
+    }).catch((err) => {
+        console.log("Catch block executed",err)
     })
 })
 

@@ -27,12 +27,12 @@
                     <div class="mb-3">
                         <label for="exampleInputRegnum" class="form-label"  maxlength="4">Registration No.</label>
                         <input type="text" name="usernameLogin" class="form-control" minlength="5" maxlength="9"
-                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
                         <div class="form-text">This is your username</div>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control"  name="passwordLogin" id="exampleInputPassword1">
+                        <input type="password" class="form-control"  name="passwordLogin" id="exampleInputPassword1" required>
                     </div>
                     <div class="container d-flex justify-content-center">
                         <button type="submit" class="btn btn-success">Login</button>
