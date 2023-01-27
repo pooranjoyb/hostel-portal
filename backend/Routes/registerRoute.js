@@ -12,24 +12,21 @@ registerRouter.post('/register', (req, res) => {
         password: pass
     })
 
-    register.findOne({ username: usn }, async (err, user) => {
-        if (err) {
-            res.send(err)
-        }
-        else if (user) {
+    register.findOne({ username: usn }, (err, user) => {
+        if (user) {
             res.send('User already exists!!! Please Login')
         } else {
-            const token = newUser.generateAuthToken();
-            try {
-                newUser.save()
-                res.send("Voila! Registraion Successfull !!! Login using your credentials")
+            //         const token = newUser.generateAuthToken();
+            // try {
+            newUser.save()
+            res.status(201).send("Voila! Registraion Successfull !!! Login using your credentials")
 
-            } catch (err) {
-                res.send("Couldnot register. Contact the developer")
-            }
+            // } catch (err) {
+            // res.send("Couldnot register. Contact the developer")
+            // }W
         }
-    }).catch((err) => {
-        console.log("Catch block executed",err)
+        // }).clone().catch((err) => {
+        //     console.log("Catch block executed",err)
     })
 })
 
