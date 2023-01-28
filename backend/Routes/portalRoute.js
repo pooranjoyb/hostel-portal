@@ -21,18 +21,18 @@ portalRoute.post('/userPortal', async (req, res) => {
                         res.status(201).render('../public/views/userPortal', { title: `User ${user.username}`})
                     }
                     else{
-                        res.send("Incorrect Password")
+                        res.send("Invalid credentials")
                     }
                 })
             } else {
-                res.send("Incorrect Password")
+                res.send("User not found. Please register yourself.")
             }
         }).clone().catch((err) => {
             console.log(err)
         })
     } catch (err) {
         console.log(err)
-        res.status(400).send("Invalid login details")
+        res.status(400).send("SERVER ERROR. Contact the Developer")
     }
 })
 export default portalRoute;
