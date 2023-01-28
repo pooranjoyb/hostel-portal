@@ -5,6 +5,7 @@ import dotenv from 'dotenv'
 import registerRouter from './Routes/registerRoute.js';
 import loginRouter from './Routes/loginRoute.js';
 import portalRoute from './Routes/portalRoute.js';
+import complaintRoute from './Routes/compliantRoute.js';
 
 dotenv.config();
 const app = express();
@@ -31,6 +32,9 @@ app.use('/', loginRouter)
 
 //Portal route
 app.use('/', portalRoute)
+
+//complaint route
+app.use('/', complaintRoute)
 
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`)
